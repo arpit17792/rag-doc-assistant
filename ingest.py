@@ -19,6 +19,8 @@ def load_documents():
 
         path = os.path.join(DOCS_DIR, file)
 
+        print("Loading:", file)
+
         if file.endswith(".pdf"):
             loader = PyPDFLoader(path)
             docs.extend(loader.load())
@@ -34,6 +36,7 @@ def main():
 
     print("Loading documents...")
     documents = load_documents()
+    print(documents[0].page_content[:500])
 
     print("Splitting documents...")
     splitter = RecursiveCharacterTextSplitter(
